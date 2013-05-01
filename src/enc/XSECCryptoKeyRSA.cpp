@@ -135,7 +135,7 @@ static void loadPublicExponentBase64BigNums(XSECCryptoKeyRSA& self, const std::s
 
 void XSECCryptoKeyRSA_init(void) {
 	//! XSECCryptoKeyRSA
-	boost::python::class_<XSECCryptoKeyRSAWrapper, boost::noncopyable, boost::python::bases<XSECCryptoKey> >("XSECCryptoKeyRSA")
+	auto XSECCryptoKeyRSA_ = boost::python::class_<XSECCryptoKeyRSAWrapper, boost::noncopyable, boost::python::bases<XSECCryptoKey> >("XSECCryptoKeyRSA")
 			.def(XSECCryptoKeyRSADefVisitor())
 			.def("getKeyType", &XSECCryptoKeyRSA::getKeyType)
 			.def("clone", boost::python::pure_virtual(&XSECCryptoKeyRSA::clone), boost::python::return_value_policy<boost::python::reference_existing_object>())
@@ -151,6 +151,14 @@ void XSECCryptoKeyRSA_init(void) {
 			.def("getLength", boost::python::pure_virtual(&XSECCryptoKeyRSA::getLength))
 			.def("loadPublicModulusBase64BigNums", boost::python::pure_virtual(&XSECCryptoKeyRSA::loadPublicModulusBase64BigNums))
 			.def("loadPublicExponentBase64BigNums", boost::python::pure_virtual(&XSECCryptoKeyRSA::loadPublicExponentBase64BigNums))
+			;
+	boost::python::scope XSECCryptoKeyRSAScope = XSECCryptoKeyRSA_;
+	//! XSECCryptoKeyRSA::PaddingType
+	boost::python::enum_<XSECCryptoKeyRSA::PaddingType>("PaddingType")
+			.value("PAD_NONE", XSECCryptoKeyRSA::PAD_NONE)
+			.value("PAD_PKCS_1_5", XSECCryptoKeyRSA::PAD_PKCS_1_5)
+			.value("PAD_OAEP_MGFP1", XSECCryptoKeyRSA::PAD_OAEP_MGFP1)
+			.export_values()
 			;
 }
 
