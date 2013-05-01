@@ -24,7 +24,7 @@
 
 namespace pyxsec {
 
-template <class STR>
+template <typename STR>
 class XENCEncryptedTypeDefVisitor
 : public boost::python::def_visitor<XENCEncryptedTypeDefVisitor<STR> >
 {
@@ -38,42 +38,42 @@ void visit(T& class_) const {
 	.def("setEncoding", &XENCEncryptedTypeDefVisitor::setEncoding)
 	.def("appendDSAKeyValue", &XENCEncryptedTypeDefVisitor::appendDSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
 	.def("appendRSAKeyValue", &XENCEncryptedTypeDefVisitor::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(XENCEncryptedType&, const STR&, bool)>(&XENCEncryptedTypeDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(XENCEncryptedType&, const STR&)>(&XENCEncryptedTypeDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(XENCEncryptedType&, const STR, bool)>(&XENCEncryptedTypeDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(XENCEncryptedType&, const STR)>(&XENCEncryptedTypeDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
 	;
 }
 
-static void setType(XENCEncryptedType& self, const STR& uri) {
+static void setType(XENCEncryptedType& self, const STR uri) {
 	pyxerces::XMLString buff(uri);
 	self.setType(buff.ptr());
 }
 
-static void setMimeType(XENCEncryptedType& self, const STR& mimeType) {
+static void setMimeType(XENCEncryptedType& self, const STR mimeType) {
 	pyxerces::XMLString buff(mimeType);
 	self.setMimeType(buff.ptr());
 }
 
-static void setEncoding(XENCEncryptedType& self, const STR& uri) {
+static void setEncoding(XENCEncryptedType& self, const STR uri) {
 	pyxerces::XMLString buff(uri);
 	self.setEncoding(buff.ptr());
 }
 
-static DSIGKeyInfoValue * appendDSAKeyValue(XENCEncryptedType& self, const STR& P, const STR& Q, const STR& G, const STR& Y) {
+static DSIGKeyInfoValue * appendDSAKeyValue(XENCEncryptedType& self, const STR P, const STR Q, const STR G, const STR Y) {
 	pyxerces::XMLString buff1(P), buff2(Q), buff3(G), buff4(Y);
 	return self.appendDSAKeyValue(buff1.ptr(), buff2.ptr(), buff3.ptr(), buff4.ptr());
 }
 
-static DSIGKeyInfoValue * appendRSAKeyValue(XENCEncryptedType& self, const STR& modulus,  const STR& exponent) {
+static DSIGKeyInfoValue * appendRSAKeyValue(XENCEncryptedType& self, const STR modulus,  const STR exponent) {
 	pyxerces::XMLString buff1(modulus), buff2(exponent);
 	return self.appendRSAKeyValue(buff1.ptr(), buff2.ptr());
 }
 
-static DSIGKeyInfoName * appendKeyName(XENCEncryptedType& self, const STR& name, bool isDName) {
+static DSIGKeyInfoName * appendKeyName(XENCEncryptedType& self, const STR name, bool isDName) {
 	pyxerces::XMLString buff(name);
 	return self.appendKeyName(buff.ptr(), isDName);
 }
 
-static DSIGKeyInfoName * appendKeyName(XENCEncryptedType& self, const STR& name) {
+static DSIGKeyInfoName * appendKeyName(XENCEncryptedType& self, const STR name) {
 	return appendKeyName(self, name, false);
 }
 
@@ -85,7 +85,7 @@ BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(XENCEncryptedTypeAppendKeyNameOverloads, 
 void XENCEncryptedType_init(void) {
 	//! XENCEncryptedType
 	boost::python::class_<XENCEncryptedType, boost::noncopyable>("XENCEncryptedType", boost::python::no_init)
-			.def(XENCEncryptedTypeDefVisitor<std::string>())
+			.def(XENCEncryptedTypeDefVisitor<char*>())
 			//! TODO: XENCCipherData
 			.def("getCipherData", &XENCEncryptedType::getCipherData, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: XENCEncryptionMethod

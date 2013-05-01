@@ -45,7 +45,7 @@ boost::python::tuple pyMaskGenerationFunc2URI(maskGenerationFunc mgf) {
 	return boost::python::make_tuple(result, buffer);
 }
 
-boost::python::tuple pyXSECmapURIToSignatureMethods(const std::string& URI) {
+boost::python::tuple pyXSECmapURIToSignatureMethods(const char* URI) {
 	pyxerces::XMLString buff(URI);
 	signatureMethod sm;
 	hashMethod hm;
@@ -53,21 +53,21 @@ boost::python::tuple pyXSECmapURIToSignatureMethods(const std::string& URI) {
 	return boost::python::make_tuple(result, sm, hm);
 }
 
-boost::python::tuple pyXSECmapURIToHashMethod(const std::string& URI) {
+boost::python::tuple pyXSECmapURIToHashMethod(const char* URI) {
 	pyxerces::XMLString buff(URI);
 	hashMethod hm;
 	bool result = XSECmapURIToHashMethod(buff.ptr(), hm);
 	return boost::python::make_tuple(result, hm);
 }
 
-boost::python::tuple pyXSECmapURIToCanonicalizationMethod(const std::string& URI) {
+boost::python::tuple pyXSECmapURIToCanonicalizationMethod(const char* URI) {
 	pyxerces::XMLString buff(URI);
 	canonicalizationMethod cm;
 	bool result = XSECmapURIToCanonicalizationMethod(buff.ptr(), cm);
 	return boost::python::make_tuple(result, cm);
 }
 
-boost::python::tuple pyXSECmapURIToMaskGenerationFunc(const std::string& URI) {
+boost::python::tuple pyXSECmapURIToMaskGenerationFunc(const char* URI) {
 	pyxerces::XMLString buff(URI);
 	maskGenerationFunc mgf;
 	bool result = XSECmapURIToMaskGenerationFunc(buff.ptr(), mgf);

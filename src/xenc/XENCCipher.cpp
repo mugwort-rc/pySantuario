@@ -52,7 +52,7 @@ static void setKEK(XENCCipher& self, XSECCryptoKey * key) {
 
 };
 
-template <class STR>
+template <typename STR>
 class XENCCipherStrDefVisitor
 : public boost::python::def_visitor<XENCCipherStrDefVisitor<STR> >
 {
@@ -73,47 +73,47 @@ void visit(T& class_) const {
 	;
 }
 
-static xercesc::DOMDocument* encryptElement(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR& algorithmURI) {
+static xercesc::DOMDocument* encryptElement(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR algorithmURI) {
 	pyxerces::XMLString buff(algorithmURI);
 	return self.encryptElement(element, em, buff.ptr());
 }
 
-static xercesc::DOMNode* encryptElementDetached(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR& algorithmURI) {
+static xercesc::DOMNode* encryptElementDetached(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR algorithmURI) {
 	pyxerces::XMLString buff(algorithmURI);
 	return self.encryptElementDetached(element, em, buff.ptr());
 }
 
-static xercesc::DOMDocument* encryptElementContent(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR& algorithmURI) {
+static xercesc::DOMDocument* encryptElementContent(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR algorithmURI) {
 	pyxerces::XMLString buff(algorithmURI);
 	return self.encryptElementContent(element, em, buff.ptr());
 }
 
-static xercesc::DOMNode* encryptElementContentDetached(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR& algorithmURI) {
+static xercesc::DOMNode* encryptElementContentDetached(XENCCipher& self, xercesc::DOMElement* element, encryptionMethod em, const STR algorithmURI) {
 	pyxerces::XMLString buff(algorithmURI);
 	return self.encryptElementContentDetached(element, em, buff.ptr());
 }
 
-static XENCEncryptedKey * encryptKey(XENCCipher& self, const std::string& key, encryptionMethod em, const STR& algorithmURI) {
+static XENCEncryptedKey * encryptKey(XENCCipher& self, const std::string& key, encryptionMethod em, const STR algorithmURI) {
 	pyxerces::XMLString buff(algorithmURI);
 	return self.encryptKey(reinterpret_cast<const unsigned char*>(key.c_str()), key.size(), em, buff.ptr());
 }
 
-static XENCEncryptedData * encryptBinInputStream(XENCCipher& self, xercesc::BinInputStream * plainText, encryptionMethod em, const STR& algorithmURI) {
+static XENCEncryptedData * encryptBinInputStream(XENCCipher& self, xercesc::BinInputStream * plainText, encryptionMethod em, const STR algorithmURI) {
 	pyxerces::XMLString buff(algorithmURI);
 	return self.encryptBinInputStream(plainText, em, buff.ptr());
 }
 
-static XENCEncryptedData * encryptTXFMChain(XENCCipher& self, TXFMChain * plainText, encryptionMethod em, const STR& algorithmURI) {
+static XENCEncryptedData * encryptTXFMChain(XENCCipher& self, TXFMChain * plainText, encryptionMethod em, const STR algorithmURI) {
 	pyxerces::XMLString buff(algorithmURI);
 	return self.encryptTXFMChain(plainText, em, buff.ptr());
 }
 
-static void setXENCNSPrefix(XENCCipher& self, const STR& prefix) {
+static void setXENCNSPrefix(XENCCipher& self, const STR prefix) {
 	pyxerces::XMLString buff(prefix);
 	self.setXENCNSPrefix(buff.ptr());
 }
 
-static XENCEncryptedData* createEncryptedData(XENCCipher& self, XENCCipherData::XENCCipherDataType type, const STR& algorithm, const STR& value) {
+static XENCEncryptedData* createEncryptedData(XENCCipher& self, XENCCipherData::XENCCipherDataType type, const STR algorithm, const STR value) {
 	pyxerces::XMLString buff1(algorithm), buff2(value);
 	return self.createEncryptedData(type, buff1.ptr(), buff2.ptr());
 }
@@ -133,7 +133,7 @@ void XENCCipher_init(void) {
 	//! XENCCipher
 	boost::python::class_<XENCCipher, boost::noncopyable>("XENCCipher", boost::python::no_init)
 			.def(XENCCipherDefVisitor())
-			.def(XENCCipherStrDefVisitor<std::string>())
+			.def(XENCCipherStrDefVisitor<char*>())
 			.def("decryptElement", static_cast<xercesc::DOMDocument*(XENCCipher::*)(xercesc::DOMElement*)>(&XENCCipher::decryptElement), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("decryptElementDetached", static_cast<xercesc::DOMNode*(XENCCipher::*)(xercesc::DOMElement*)>(&XENCCipher::decryptElementDetached), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("decryptElement", static_cast<xercesc::DOMDocument*(XENCCipher::*)()>(&XENCCipher::decryptElement), boost::python::return_value_policy<boost::python::reference_existing_object>())
