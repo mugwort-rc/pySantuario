@@ -85,7 +85,6 @@ void XENCEncryptedType_init(void) {
 	boost::python::class_<XENCEncryptedType, boost::noncopyable>("XENCEncryptedType", boost::python::no_init)
 			.def(XENCEncryptedTypeDefVisitor<char*>())
 			.def("getCipherData", &XENCEncryptedType::getCipherData, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: XENCEncryptionMethod
 			.def("getEncryptionMethod", &XENCEncryptedType::getEncryptionMethod, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("getElement", &XENCEncryptedType::getElement, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("getType", &XENCEncryptedType::getType, boost::python::return_value_policy<boost::python::return_by_value>())

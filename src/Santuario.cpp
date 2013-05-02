@@ -45,6 +45,7 @@
 #include "xenc/XENCEncryptedData.h"
 #include "xenc/XENCEncryptedKey.h"
 #include "xenc/XENCEncryptedType.h"
+#include "xenc/XENCEncryptionMethod.h"
 
 BOOST_PYTHON_MODULE(__Santuario)
 {
@@ -61,7 +62,6 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::XSECCryptoX509_init();
 
 	// xenc
-	pyxsec::XENCCipherData_init();
 	pyxsec::XENCEncryptedType_init();
 
 	// inherited (depth:2) classes
@@ -112,6 +112,8 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// xenc
 	// --------------------------------------------------
 	pyxsec::XENCCipher_init();
+	pyxsec::XENCCipherData_init();
 	pyxsec::XENCEncryptedData_init();
 	pyxsec::XENCEncryptedKey_init();
+	pyxsec::XENCEncryptionMethod_init();
 }
