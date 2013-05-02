@@ -84,7 +84,6 @@ void XENCEncryptedType_init(void) {
 	//! XENCEncryptedType
 	boost::python::class_<XENCEncryptedType, boost::noncopyable>("XENCEncryptedType", boost::python::no_init)
 			.def(XENCEncryptedTypeDefVisitor<char*>())
-			//! TODO: XENCCipherData
 			.def("getCipherData", &XENCEncryptedType::getCipherData, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: XENCEncryptionMethod
 			.def("getEncryptionMethod", &XENCEncryptedType::getEncryptionMethod, boost::python::return_value_policy<boost::python::reference_existing_object>())
@@ -95,10 +94,8 @@ void XENCEncryptedType_init(void) {
 			.def("setType", &XENCEncryptedType::setType)
 			.def("setMimeType", &XENCEncryptedType::setMimeType)
 			.def("setEncoding", &XENCEncryptedType::setEncoding)
-			//! TODO: DSIGKeyInfoList
 			.def("getKeyInfoList", &XENCEncryptedType::getKeyInfoList, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("clearKeyInfo", &XENCEncryptedType::clearKeyInfo)
-			//! TODO: appendDSAKeyValue
 			.def("appendDSAKeyValue", &XENCEncryptedType::appendDSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendRSAKeyValue", &XENCEncryptedType::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendX509Data", &XENCEncryptedType::appendX509Data, boost::python::return_value_policy<boost::python::reference_existing_object>())
