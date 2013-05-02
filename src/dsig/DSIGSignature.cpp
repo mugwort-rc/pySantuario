@@ -194,7 +194,6 @@ void DSIGSignature_init(void) {
 			.def("removeReference", &DSIGSignature::removeReference, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("calculateSignedInfoAndReferenceHash", &DSIGSignature::calculateSignedInfoAndReferenceHash)
 			.def("calculateSignedInfoHash", &DSIGSignature::calculateSignedInfoHash)
-			//! TODO: DSIGReferenceList
 			.def("getReferenceList", static_cast<DSIGReferenceList*(DSIGSignature::*)(void)>(&DSIGSignature::getReferenceList), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: XSECBinTXFMInputStream
 			.def("makeBinInputStream", &DSIGSignature::makeBinInputStream, boost::python::return_value_policy<boost::python::reference_existing_object>())

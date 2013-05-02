@@ -111,7 +111,6 @@ void DSIGReference_init(void) {
 			//! TODO: DSIGTransformList
 			.def("getTransforms", &DSIGReference::getTransforms, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("isManifest", &DSIGReference::isManifest)
-			//! TODO: DSIGReferenceList
 			.def("getManifestReferenceList", &DSIGReference::getManifestReferenceList, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("calculateHash", &DSIGReference::calculateHash)
 			.def("readHash", &DSIGReference::readHash)

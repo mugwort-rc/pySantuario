@@ -23,6 +23,7 @@
 #include "dsig/DSIGKeyInfoX509.h"
 #include "dsig/DSIGObject.h"
 #include "dsig/DSIGReference.h"
+#include "dsig/DSIGReferenceList.h"
 #include "dsig/DSIGSignature.h"
 #include "dsig/DSIGTransform.h"
 #include "dsig/DSIGTransformBase64.h"
@@ -109,6 +110,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::DSIGKeyInfoX509_init();
 	pyxsec::DSIGObject_init();
 	pyxsec::DSIGReference_init();
+	pyxsec::DSIGReferenceList_init();
 	pyxsec::DSIGSignature_init();
 	pyxsec::DSIGTransformBase64_init();
 	pyxsec::DSIGTransformC14n_init();
