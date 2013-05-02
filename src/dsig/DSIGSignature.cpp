@@ -224,7 +224,6 @@ void DSIGSignature_init(void) {
 			.def("setKeyInfoResolver", &DSIGSignature::setKeyInfoResolver)
 			//! TODO: XSECKeyInfoResolver
 			.def("getKeyInfoResolver", &DSIGSignature::getKeyInfoResolver, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: XSECKeyInfoResolver
 			.def("getKeyInfoList", static_cast<DSIGKeyInfoList*(DSIGSignature::*)(void)>(&DSIGSignature::getKeyInfoList), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("clearKeyInfo", &DSIGSignature::clearKeyInfo)
 			//! TODO: DSIGKeyInfoValue

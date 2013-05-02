@@ -14,12 +14,14 @@
 // dsig
 #include "dsig/DSIGConstants.h"
 #include "dsig/DSIGKeyInfo.h"
+#include "dsig/DSIGKeyInfoList.h"
 #include "dsig/DSIGKeyInfoName.h"
 #include "dsig/DSIGReference.h"
 #include "dsig/DSIGSignature.h"
 #include "dsig/DSIGTransform.h"
 #include "dsig/DSIGTransformEnvelope.h"
 // enc
+#include "enc/XSECCryptoException.h"
 #include "enc/XSECCryptoKey.h"
 #include "enc/XSECCryptoKeyHMAC.h"
 #include "enc/XSECCryptoKeyRSA.h"
@@ -72,6 +74,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// dsig
 	// --------------------------------------------------
 	pyxsec::DSIGConstants_init();
+	pyxsec::DSIGKeyInfoList_init();
 	pyxsec::DSIGKeyInfoName_init();
 	pyxsec::DSIGReference_init();
 	pyxsec::DSIGSignature_init();
@@ -80,6 +83,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// ==================================================
 	// enc
 	// --------------------------------------------------
+	pyxsec::XSECCryptoException_init();
 	// OpenSSL
 	pyxsec::OpenSSLCryptoKeyHMAC_init();
 	pyxsec::OpenSSLCryptoKeyRSA_init();
