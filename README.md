@@ -23,3 +23,7 @@ See samples/simpleEncrypt.py
 
 ### XML Decryption
 See samples/simpleDecrypt.py
+
+### XML Digital Signature
+#### HMAC
+See samples/simpleHMAC.py

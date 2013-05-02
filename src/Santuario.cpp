@@ -14,13 +14,20 @@
 // dsig
 #include "dsig/DSIGConstants.h"
 #include "dsig/DSIGKeyInfo.h"
+#include "dsig/DSIGKeyInfoName.h"
+#include "dsig/DSIGReference.h"
+#include "dsig/DSIGSignature.h"
+#include "dsig/DSIGTransform.h"
+#include "dsig/DSIGTransformEnvelope.h"
 // enc
 #include "enc/XSECCryptoKey.h"
+#include "enc/XSECCryptoKeyHMAC.h"
 #include "enc/XSECCryptoKeyRSA.h"
 #include "enc/XSECCryptoSymmetricKey.h"
 #include "enc/XSECCryptoX509.h"
-#include "enc/OpenSSL/OpenSSLCryptoSymmetricKey.h"
+#include "enc/OpenSSL/OpenSSLCryptoKeyHMAC.h"
 #include "enc/OpenSSL/OpenSSLCryptoKeyRSA.h"
+#include "enc/OpenSSL/OpenSSLCryptoSymmetricKey.h"
 #include "enc/OpenSSL/OpenSSLCryptoX509.h"
 // framework
 #include "framework/XSECException.h"
@@ -41,9 +48,11 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// --------------------------------------------------
 	// dsig
 	pyxsec::DSIGKeyInfo_init();
+	pyxsec::DSIGTransform_init();
 
 	// enc
 	pyxsec::XSECCryptoKey_init();
+	pyxsec::XSECCryptoKeyHMAC_init();
 	pyxsec::XSECCryptoX509_init();
 
 	// xenc
@@ -63,13 +72,18 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// dsig
 	// --------------------------------------------------
 	pyxsec::DSIGConstants_init();
+	pyxsec::DSIGKeyInfoName_init();
+	pyxsec::DSIGReference_init();
+	pyxsec::DSIGSignature_init();
+	pyxsec::DSIGTransformEnvelope_init();
 
 	// ==================================================
 	// enc
 	// --------------------------------------------------
 	// OpenSSL
-	pyxsec::OpenSSLCryptoSymmetricKey_init();
+	pyxsec::OpenSSLCryptoKeyHMAC_init();
 	pyxsec::OpenSSLCryptoKeyRSA_init();
+	pyxsec::OpenSSLCryptoSymmetricKey_init();
 	pyxsec::OpenSSLCryptoX509_init();
 
 	// ==================================================
