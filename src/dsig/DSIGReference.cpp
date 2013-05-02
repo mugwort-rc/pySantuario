@@ -93,15 +93,10 @@ void DSIGReference_init(void) {
 			.def("createBlankReference", static_cast<xercesc::DOMElement*(DSIGReference::*)(const XMLCh*, hashMethod, char*)>(&DSIGReference::createBlankReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("createBlankReference", static_cast<xercesc::DOMElement*(DSIGReference::*)(const XMLCh*, const XMLCh*, const XMLCh*)>(&DSIGReference::createBlankReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendEnvelopedSignatureTransform", &DSIGReference::appendEnvelopedSignatureTransform, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGTransformBase64
 			.def("appendBase64Transform", &DSIGReference::appendBase64Transform, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGTransformXPath
 			.def("appendXPathTransform", &DSIGReference::appendXPathTransform, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGTransformXPathFilter
 			.def("appendXPathFilterTransform", &DSIGReference::appendXPathFilterTransform, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGTransformXSL
 			.def("appendXSLTransform", &DSIGReference::appendXSLTransform, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGTransformC14n
 			.def("appendCanonicalizationTransform", static_cast<DSIGTransformC14n*(DSIGReference::*)(const XMLCh*)>(&DSIGReference::appendCanonicalizationTransform), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendCanonicalizationTransform", static_cast<DSIGTransformC14n*(DSIGReference::*)(canonicalizationMethod)>(&DSIGReference::appendCanonicalizationTransform), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: TXFMBase

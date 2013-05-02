@@ -24,7 +24,12 @@
 #include "dsig/DSIGReference.h"
 #include "dsig/DSIGSignature.h"
 #include "dsig/DSIGTransform.h"
+#include "dsig/DSIGTransformBase64.h"
+#include "dsig/DSIGTransformC14n.h"
 #include "dsig/DSIGTransformEnvelope.h"
+#include "dsig/DSIGTransformXPath.h"
+#include "dsig/DSIGTransformXPathFilter.h"
+#include "dsig/DSIGTransformXSL.h"
 // enc
 #include "enc/XSECCryptoException.h"
 #include "enc/XSECCryptoKey.h"
@@ -103,7 +108,12 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::DSIGKeyInfoX509_init();
 	pyxsec::DSIGReference_init();
 	pyxsec::DSIGSignature_init();
+	pyxsec::DSIGTransformBase64_init();
+	pyxsec::DSIGTransformC14n_init();
 	pyxsec::DSIGTransformEnvelope_init();
+	pyxsec::DSIGTransformXPath_init();
+	pyxsec::DSIGTransformXPathFilter_init();
+	pyxsec::DSIGTransformXSL_init();
 
 	// ==================================================
 	// enc
