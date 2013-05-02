@@ -20,7 +20,6 @@ void XENCCipherData_init(void) {
 	//! XENCCipherData
 	auto XENCCipherData_ = boost::python::class_<XENCCipherData, boost::noncopyable>("XENCCipherData", boost::python::no_init)
 			.def("getCipherDataType", boost::python::pure_virtual(&XENCCipherData::getCipherDataType))
-			//! TODO XENCCipherValue
 			.def("getCipherValue", boost::python::pure_virtual(&XENCCipherData::getCipherValue), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: XENCCipherReference
 			.def("getCipherReference", boost::python::pure_virtual(&XENCCipherData::getCipherReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
