@@ -38,6 +38,7 @@
 #include "enc/OpenSSL/OpenSSLCryptoSymmetricKey.h"
 #include "enc/OpenSSL/OpenSSLCryptoX509.h"
 // framework
+#include "framework/XSECEnv.h"
 #include "framework/XSECException.h"
 #include "framework/XSECProvider.h"
 // utils
@@ -118,6 +119,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// ==================================================
 	// framework
 	// --------------------------------------------------
+	pyxsec::XSECEnv_init();
 	pyxsec::XSECException_init();
 	pyxsec::XSECProvider_init();
 

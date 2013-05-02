@@ -87,7 +87,6 @@ BOOST_PYTHON_FUNCTION_OVERLOADS(DSIGReferenceHashReferenceListOverloads, DSIGRef
 void DSIGReference_init(void) {
 	//! DSIGReference
 	boost::python::class_<DSIGReference, boost::noncopyable>("DSIGReference", boost::python::init<const XSECEnv*, xercesc::DOMNode*>())
-			//! TODO: XSECEnv
 			.def(boost::python::init<const XSECEnv*>())
 			.def(DSIGReferenceDefVisitor<char*>())
 			.def("load", &DSIGReference::load)
