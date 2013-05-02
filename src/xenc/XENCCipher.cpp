@@ -155,10 +155,8 @@ void XENCCipher_init(void) {
 			.def("getEncryptedData", &XENCCipher::getEncryptedData, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("getPrettyPrint", &XENCCipher::getPrettyPrint)
 			.def("getExclusiveC14nSerialisation", &XENCCipher::getExclusiveC14nSerialisation)
-			//! TODO: XSECCryptoKey
 			//.def("setKey", &XENCCipher::setKey)  //!< must be set key clone
 			//.def("setKEK", &XENCCipher::setKEK)  //!< must be set key clone
-			//! TODO: XSECKeyInfoResolver
 			.def("setKeyInfoResolver", &XENCCipher::setKeyInfoResolver)
 			.def("setXENCNSPrefix", &XENCCipher::setXENCNSPrefix)
 			.def("setPrettyPrint", &XENCCipher::setPrettyPrint)

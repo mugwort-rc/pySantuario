@@ -32,6 +32,7 @@
 #include "enc/XSECCryptoKeyRSA.h"
 #include "enc/XSECCryptoSymmetricKey.h"
 #include "enc/XSECCryptoX509.h"
+#include "enc/XSECKeyInfoResolver.h"
 #include "enc/OpenSSL/OpenSSLCryptoKeyHMAC.h"
 #include "enc/OpenSSL/OpenSSLCryptoKeyRSA.h"
 #include "enc/OpenSSL/OpenSSLCryptoSymmetricKey.h"
@@ -107,6 +108,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// enc
 	// --------------------------------------------------
 	pyxsec::XSECCryptoException_init();
+	pyxsec::XSECKeyInfoResolver_init();
 	// OpenSSL
 	pyxsec::OpenSSLCryptoKeyHMAC_init();
 	pyxsec::OpenSSLCryptoKeyRSA_init();
