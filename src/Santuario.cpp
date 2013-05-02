@@ -42,6 +42,7 @@
 // xenc
 #include "xenc/XENCCipher.h"
 #include "xenc/XENCCipherData.h"
+#include "xenc/XENCCipherReference.h"
 #include "xenc/XENCCipherValue.h"
 #include "xenc/XENCEncryptedData.h"
 #include "xenc/XENCEncryptedKey.h"
@@ -122,6 +123,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// --------------------------------------------------
 	pyxsec::XENCCipher_init();
 	pyxsec::XENCCipherData_init();
+	pyxsec::XENCCipherReference_init();
 	pyxsec::XENCCipherValue_init();
 	pyxsec::XENCEncryptedData_init();
 	pyxsec::XENCEncryptedKey_init();
