@@ -35,6 +35,7 @@
 #include "dsig/DSIGTransformXPath.h"
 #include "dsig/DSIGTransformXPathFilter.h"
 #include "dsig/DSIGTransformXSL.h"
+#include "dsig/DSIGXPathFilterExpr.h"
 // enc
 #include "enc/XSECCryptoException.h"
 #include "enc/XSECCryptoKey.h"
@@ -124,6 +125,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::DSIGTransformXPath_init();
 	pyxsec::DSIGTransformXPathFilter_init();
 	pyxsec::DSIGTransformXSL_init();
+	pyxsec::DSIGXPathFilterExpr_init();
 
 	// ==================================================
 	// enc
