@@ -54,6 +54,7 @@
 // xkms
 #include "xkms/XKMSMessageAbstractType.h"
 #include "xkms/XKMSMessageFactory.h"
+#include "xkms/XKMSResult.h"
 #include "xkms/XKMSResultType.h"
 
 BOOST_PYTHON_MODULE(__Santuario)
@@ -138,4 +139,5 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// xkms
 	// --------------------------------------------------
 	pyxsec::XKMSMessageFactory_init();
+	pyxsec::XKMSResult_init();
 }

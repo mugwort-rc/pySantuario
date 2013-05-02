@@ -207,7 +207,6 @@ void XKMSMessageFactory_init(void) {
 	//! XKMSMessageFactory
 	boost::python::class_<XKMSMessageFactory, boost::noncopyable>("XKMSMessageFactory", boost::python::no_init)
 			.def(XKMSMessageFactoryDefVisitor<char*>())
-			//! TODO: XKMSMessageAbstractType
 			.def("newMessageFromDOM", boost::python::pure_virtual(&XKMSMessageFactory::newMessageFromDOM), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: XKMSCompoundRequest
 			.def("createCompoundRequest", boost::python::pure_virtual(static_cast<XKMSCompoundRequest*(XKMSMessageFactory::*)(const XMLCh*, xercesc::DOMDocument*, const XMLCh*)>(&XKMSMessageFactory::createCompoundRequest)), (boost::python::arg("service"), boost::python::arg("doc"), boost::python::arg("id") = NULL), boost::python::return_value_policy<boost::python::reference_existing_object>())
@@ -225,7 +224,6 @@ void XKMSMessageFactory_init(void) {
 			.def("createValidateResult", boost::python::pure_virtual(static_cast<XKMSValidateResult*(XKMSMessageFactory::*)(XKMSValidateRequest*, xercesc::DOMDocument*, XKMSResultType::ResultMajor, XKMSResultType::ResultMinor, const XMLCh*)>(&XKMSMessageFactory::createValidateResult)), (boost::python::arg("request"), boost::python::arg("doc"), boost::python::arg("rmaj"), boost::python::arg("rmin") = XKMSResultType::NoneMinor, boost::python::arg("id") = NULL), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: XKMSCompoundResult
 			.def("createCompoundResult", boost::python::pure_virtual(static_cast<XKMSCompoundResult*(XKMSMessageFactory::*)(XKMSCompoundRequest*, xercesc::DOMDocument*, XKMSResultType::ResultMajor, XKMSResultType::ResultMinor, const XMLCh*)>(&XKMSMessageFactory::createCompoundResult)), (boost::python::arg("request"), boost::python::arg("doc"), boost::python::arg("rmaj"), boost::python::arg("rmin") = XKMSResultType::NoneMinor, boost::python::arg("id") = NULL), boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: XKMSResult
 			.def("createResult", boost::python::pure_virtual(static_cast<XKMSResult*(XKMSMessageFactory::*)(XKMSRequestAbstractType*, xercesc::DOMDocument*, XKMSResultType::ResultMajor, XKMSResultType::ResultMinor, const XMLCh*)>(&XKMSMessageFactory::createResult)), (boost::python::arg("request"), boost::python::arg("doc"), boost::python::arg("rmaj"), boost::python::arg("rmin") = XKMSResultType::NoneMinor, boost::python::arg("id") = NULL), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: XKMSStatusResult
 			.def("createStatusResult", boost::python::pure_virtual(static_cast<XKMSStatusResult*(XKMSMessageFactory::*)(XKMSStatusRequest*, xercesc::DOMDocument*, XKMSResultType::ResultMajor, XKMSResultType::ResultMinor, const XMLCh*)>(&XKMSMessageFactory::createStatusResult)), (boost::python::arg("request"), boost::python::arg("doc"), boost::python::arg("rmaj"), boost::python::arg("rmin") = XKMSResultType::NoneMinor, boost::python::arg("id") = NULL), boost::python::return_value_policy<boost::python::reference_existing_object>())
@@ -250,9 +248,7 @@ void XKMSMessageFactory_init(void) {
 			.def("setXPFNSPrefix", boost::python::pure_virtual(&XKMSMessageFactory::setXPFNSPrefix))
 			.def("setXENCNSPrefix", boost::python::pure_virtual(&XKMSMessageFactory::setXENCNSPrefix))
 			.def("setXKMSNSPrefix", boost::python::pure_virtual(&XKMSMessageFactory::setXKMSNSPrefix))
-			//! TODO: XKMSRequestAbstractType
 			.def("toRequestAbstractType", boost::python::pure_virtual(&XKMSMessageFactory::toRequestAbstractType), boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: XKMSResultType
 			.def("toResultType", boost::python::pure_virtual(&XKMSMessageFactory::toResultType), boost::python::return_value_policy<boost::python::reference_existing_object>())
 			;
 }
