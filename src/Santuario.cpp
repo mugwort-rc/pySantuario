@@ -27,6 +27,7 @@
 #include "dsig/DSIGReference.h"
 #include "dsig/DSIGReferenceList.h"
 #include "dsig/DSIGSignature.h"
+#include "dsig/DSIGSignedInfo.h"
 #include "dsig/DSIGTransform.h"
 #include "dsig/DSIGTransformBase64.h"
 #include "dsig/DSIGTransformC14n.h"
@@ -118,6 +119,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::DSIGReference_init();
 	pyxsec::DSIGReferenceList_init();
 	pyxsec::DSIGSignature_init();
+	pyxsec::DSIGSignedInfo_init();
 	pyxsec::DSIGTransformBase64_init();
 	pyxsec::DSIGTransformC14n_init();
 	pyxsec::DSIGTransformEnvelope_init();
