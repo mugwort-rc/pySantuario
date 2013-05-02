@@ -224,11 +224,8 @@ void DSIGSignature_init(void) {
 			.def("appendRSAKeyValue", &DSIGSignature::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendX509Data", &DSIGSignature::appendX509Data, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendKeyName", &DSIGSignature::appendKeyName, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGKeyInfoPGPData
 			.def("appendPGPData", &DSIGSignature::appendPGPData, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGKeyInfoSPKIData
 			.def("appendSPKIData", &DSIGSignature::appendSPKIData, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGKeyInfoMgmtData
 			.def("appendMgmtData", &DSIGSignature::appendMgmtData, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: DSIGObject
 			.def("appendObject", &DSIGSignature::appendObject, boost::python::return_value_policy<boost::python::reference_existing_object>())

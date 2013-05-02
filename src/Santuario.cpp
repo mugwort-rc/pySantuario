@@ -15,7 +15,10 @@
 #include "dsig/DSIGConstants.h"
 #include "dsig/DSIGKeyInfo.h"
 #include "dsig/DSIGKeyInfoList.h"
+#include "dsig/DSIGKeyInfoMgmtData.h"
 #include "dsig/DSIGKeyInfoName.h"
+#include "dsig/DSIGKeyInfoPGPData.h"
+#include "dsig/DSIGKeyInfoSPKIData.h"
 #include "dsig/DSIGKeyInfoValue.h"
 #include "dsig/DSIGKeyInfoX509.h"
 #include "dsig/DSIGReference.h"
@@ -89,7 +92,10 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// --------------------------------------------------
 	pyxsec::DSIGConstants_init();
 	pyxsec::DSIGKeyInfoList_init();
+	pyxsec::DSIGKeyInfoMgmtData_init();
 	pyxsec::DSIGKeyInfoName_init();
+	pyxsec::DSIGKeyInfoPGPData_init();
+	pyxsec::DSIGKeyInfoSPKIData_init();
 	pyxsec::DSIGKeyInfoValue_init();
 	pyxsec::DSIGKeyInfoX509_init();
 	pyxsec::DSIGReference_init();
