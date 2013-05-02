@@ -222,7 +222,6 @@ void DSIGSignature_init(void) {
 			.def("clearKeyInfo", &DSIGSignature::clearKeyInfo)
 			.def("appendDSAKeyValue", &DSIGSignature::appendDSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendRSAKeyValue", &DSIGSignature::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
-			//! TODO: DSIGKeyInfoX509
 			.def("appendX509Data", &DSIGSignature::appendX509Data, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("appendKeyName", &DSIGSignature::appendKeyName, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			//! TODO: DSIGKeyInfoPGPData
