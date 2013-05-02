@@ -29,6 +29,7 @@
 #include "dsig/DSIGTransformBase64.h"
 #include "dsig/DSIGTransformC14n.h"
 #include "dsig/DSIGTransformEnvelope.h"
+#include "dsig/DSIGTransformList.h"
 #include "dsig/DSIGTransformXPath.h"
 #include "dsig/DSIGTransformXPathFilter.h"
 #include "dsig/DSIGTransformXSL.h"
@@ -115,6 +116,7 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::DSIGTransformBase64_init();
 	pyxsec::DSIGTransformC14n_init();
 	pyxsec::DSIGTransformEnvelope_init();
+	pyxsec::DSIGTransformList_init();
 	pyxsec::DSIGTransformXPath_init();
 	pyxsec::DSIGTransformXPathFilter_init();
 	pyxsec::DSIGTransformXSL_init();

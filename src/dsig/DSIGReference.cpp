@@ -108,7 +108,6 @@ void DSIGReference_init(void) {
 			.def("getURI", &DSIGReference::getURI, boost::python::return_value_policy<boost::python::return_by_value>())
 			.def("getHashMethod", &DSIGReference::getHashMethod)
 			.def("getAlgorithmURI", &DSIGReference::getAlgorithmURI, boost::python::return_value_policy<boost::python::return_by_value>())
-			//! TODO: DSIGTransformList
 			.def("getTransforms", &DSIGReference::getTransforms, boost::python::return_value_policy<boost::python::reference_existing_object>())
 			.def("isManifest", &DSIGReference::isManifest)
 			.def("getManifestReferenceList", &DSIGReference::getManifestReferenceList, boost::python::return_value_policy<boost::python::reference_existing_object>())
