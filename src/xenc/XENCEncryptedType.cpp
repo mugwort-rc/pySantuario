@@ -29,19 +29,6 @@ class XENCEncryptedTypeDefVisitor
 : public boost::python::def_visitor<XENCEncryptedTypeDefVisitor<STR> >
 {
 friend class def_visitor_access;
-public:
-template <class T>
-void visit(T& class_) const {
-	class_
-	.def("setType", &XENCEncryptedTypeDefVisitor::setType)
-	.def("setMimeType", &XENCEncryptedTypeDefVisitor::setMimeType)
-	.def("setEncoding", &XENCEncryptedTypeDefVisitor::setEncoding)
-	.def("appendDSAKeyValue", &XENCEncryptedTypeDefVisitor::appendDSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendRSAKeyValue", &XENCEncryptedTypeDefVisitor::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(XENCEncryptedType&, const STR, bool)>(&XENCEncryptedTypeDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(XENCEncryptedType&, const STR)>(&XENCEncryptedTypeDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	;
-}
 
 static void setType(XENCEncryptedType& self, const STR uri) {
 	pyxerces::XMLString buff(uri);
@@ -68,13 +55,24 @@ static DSIGKeyInfoValue * appendRSAKeyValue(XENCEncryptedType& self, const STR m
 	return self.appendRSAKeyValue(buff1.ptr(), buff2.ptr());
 }
 
-static DSIGKeyInfoName * appendKeyName(XENCEncryptedType& self, const STR name, bool isDName) {
+static DSIGKeyInfoName * appendKeyName(XENCEncryptedType& self, const STR name, bool isDName = false) {
 	pyxerces::XMLString buff(name);
 	return self.appendKeyName(buff.ptr(), isDName);
 }
 
-static DSIGKeyInfoName * appendKeyName(XENCEncryptedType& self, const STR name) {
-	return appendKeyName(self, name, false);
+BOOST_PYTHON_FUNCTION_OVERLOADS(AppendKeyNameOverloads, appendKeyName, 2, 3)
+
+public:
+template <class T>
+void visit(T& class_) const {
+	class_
+	.def("setType", &XENCEncryptedTypeDefVisitor::setType)
+	.def("setMimeType", &XENCEncryptedTypeDefVisitor::setMimeType)
+	.def("setEncoding", &XENCEncryptedTypeDefVisitor::setEncoding)
+	.def("appendDSAKeyValue", &XENCEncryptedTypeDefVisitor::appendDSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendRSAKeyValue", &XENCEncryptedTypeDefVisitor::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendKeyName", &XENCEncryptedTypeDefVisitor::appendKeyName, AppendKeyNameOverloads()[boost::python::return_value_policy<boost::python::reference_existing_object>()])
+	;
 }
 
 };

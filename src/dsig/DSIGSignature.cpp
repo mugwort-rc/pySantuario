@@ -34,32 +34,6 @@ class DSIGSignatureStringDefVisitor
  : public boost::python::def_visitor<DSIGSignatureStringDefVisitor<STR> >
 {
 friend class def_visitor_access;
-public:
-template <class T>
-void visit(T& class_) const {
-	class_
-	.def("setDSIGNSPrefix", &DSIGSignatureStringDefVisitor::setDSIGNSPrefix)
-	.def("setECNSPrefix", &DSIGSignatureStringDefVisitor::setECNSPrefix)
-	.def("setXPFNSPrefix", &DSIGSignatureStringDefVisitor::setXPFNSPrefix)
-	.def("createBlankSignature", &DSIGSignatureStringDefVisitor::createBlankSignature, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, hashMethod, char*)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, hashMethod)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, const STR, const STR)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, const STR)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendDSAKeyValue", &DSIGSignatureStringDefVisitor::appendDSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendRSAKeyValue", &DSIGSignatureStringDefVisitor::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(DSIGSignature&, const STR, bool)>(&DSIGSignatureStringDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendKeyName", static_cast<DSIGKeyInfoName*(*)(DSIGSignature&, const STR)>(&DSIGSignatureStringDefVisitor::appendKeyName), boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendPGPData", &DSIGSignatureStringDefVisitor::appendPGPData, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendSPKIData", &DSIGSignatureStringDefVisitor::appendSPKIData, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("appendMgmtData", &DSIGSignatureStringDefVisitor::appendMgmtData, boost::python::return_value_policy<boost::python::reference_existing_object>())
-	.def("registerIdAttributeName", &DSIGSignatureStringDefVisitor::registerIdAttributeName)
-	.def("deregisterIdAttributeName", &DSIGSignatureStringDefVisitor::deregisterIdAttributeName)
-	.def("registerIdAttributeName", &DSIGSignatureStringDefVisitor::registerIdAttributeNameNS)
-	.def("deregisterIdAttributeName", &DSIGSignatureStringDefVisitor::deregisterIdAttributeNameNS)
-	;
-}
 
 static void setDSIGNSPrefix(DSIGSignature& self, const STR prefix) {
 	pyxerces::XMLString buff(prefix);
@@ -86,13 +60,9 @@ static DSIGReference* createReference(DSIGSignature& self, const STR URI, hashMe
 	return self.createReference(buff.ptr(), hm, type);
 }
 
-static DSIGReference* createReference(DSIGSignature& self, const STR URI, hashMethod hm) {
+static DSIGReference* createReference(DSIGSignature& self, const STR URI, hashMethod hm = HASH_SHA1) {
 	pyxerces::XMLString buff(URI);
 	return self.createReference(buff.ptr(), hm);
-}
-
-static DSIGReference* createReference(DSIGSignature& self, const STR URI) {
-	return createReference(self, URI, HASH_SHA1);
 }
 
 static DSIGReference * createReference(DSIGSignature& self, const STR URI, const STR hashAlgorithmURI, const STR type) {
@@ -115,13 +85,9 @@ static DSIGKeyInfoValue * appendRSAKeyValue(DSIGSignature& self, const STR modul
 	return self.appendRSAKeyValue(buff1.ptr(), buff2.ptr());
 }
 
-static DSIGKeyInfoName * appendKeyName(DSIGSignature& self, const STR name, bool isDName) {
+static DSIGKeyInfoName * appendKeyName(DSIGSignature& self, const STR name, bool isDName = false) {
 	pyxerces::XMLString buff(name);
 	return self.appendKeyName(buff.ptr(), isDName);
-}
-
-static DSIGKeyInfoName * appendKeyName(DSIGSignature& self, const STR name) {
-	return appendKeyName(self, name, false);
 }
 
 static DSIGKeyInfoPGPData * appendPGPData(DSIGSignature& self, const STR id, const STR packet) {
@@ -157,6 +123,34 @@ static void registerIdAttributeNameNS(DSIGSignature& self, const STR ns, const S
 static bool deregisterIdAttributeNameNS(DSIGSignature& self, const STR ns, const STR name) {
 	pyxerces::XMLString buff1(ns), buff2(name);
 	return self.deregisterIdAttributeNameNS(buff1.ptr(), buff2.ptr());
+}
+
+BOOST_PYTHON_FUNCTION_OVERLOADS(CreateReferenceOverloads, createReference, 2, 3)
+BOOST_PYTHON_FUNCTION_OVERLOADS(AppendKeyNameOverloads, appendKeyName, 2, 3)
+
+public:
+template <class T>
+void visit(T& class_) const {
+	class_
+	.def("setDSIGNSPrefix", &DSIGSignatureStringDefVisitor::setDSIGNSPrefix)
+	.def("setECNSPrefix", &DSIGSignatureStringDefVisitor::setECNSPrefix)
+	.def("setXPFNSPrefix", &DSIGSignatureStringDefVisitor::setXPFNSPrefix)
+	.def("createBlankSignature", &DSIGSignatureStringDefVisitor::createBlankSignature, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, hashMethod, char*)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, hashMethod)>(&DSIGSignatureStringDefVisitor::createReference), CreateReferenceOverloads()[boost::python::return_value_policy<boost::python::reference_existing_object>()])
+	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, const STR, const STR)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("createReference", static_cast<DSIGReference*(*)(DSIGSignature&, const STR, const STR)>(&DSIGSignatureStringDefVisitor::createReference), boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendDSAKeyValue", &DSIGSignatureStringDefVisitor::appendDSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendRSAKeyValue", &DSIGSignatureStringDefVisitor::appendRSAKeyValue, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendKeyName", &DSIGSignatureStringDefVisitor::appendKeyName, AppendKeyNameOverloads()[boost::python::return_value_policy<boost::python::reference_existing_object>()])
+	.def("appendPGPData", &DSIGSignatureStringDefVisitor::appendPGPData, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendSPKIData", &DSIGSignatureStringDefVisitor::appendSPKIData, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("appendMgmtData", &DSIGSignatureStringDefVisitor::appendMgmtData, boost::python::return_value_policy<boost::python::reference_existing_object>())
+	.def("registerIdAttributeName", &DSIGSignatureStringDefVisitor::registerIdAttributeName)
+	.def("deregisterIdAttributeName", &DSIGSignatureStringDefVisitor::deregisterIdAttributeName)
+	.def("registerIdAttributeName", &DSIGSignatureStringDefVisitor::registerIdAttributeNameNS)
+	.def("deregisterIdAttributeName", &DSIGSignatureStringDefVisitor::deregisterIdAttributeNameNS)
+	;
 }
 
 };
