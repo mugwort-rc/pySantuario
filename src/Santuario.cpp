@@ -46,6 +46,10 @@
 #include "xenc/XENCEncryptedKey.h"
 #include "xenc/XENCEncryptedType.h"
 #include "xenc/XENCEncryptionMethod.h"
+// xkms
+#include "xkms/XKMSMessageAbstractType.h"
+#include "xkms/XKMSMessageFactory.h"
+#include "xkms/XKMSResultType.h"
 
 BOOST_PYTHON_MODULE(__Santuario)
 {
@@ -64,10 +68,14 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// xenc
 	pyxsec::XENCEncryptedType_init();
 
+	// xkms
+	pyxsec::XKMSMessageAbstractType_init();
+
 	// inherited (depth:2) classes
 	// enc
 	pyxsec::XSECCryptoKeyRSA_init();
 	pyxsec::XSECCryptoSymmetricKey_init();
+	pyxsec::XKMSResultType_init();
 
 	// ==================================================
 	// common
@@ -116,4 +124,8 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::XENCEncryptedData_init();
 	pyxsec::XENCEncryptedKey_init();
 	pyxsec::XENCEncryptionMethod_init();
+	// ==================================================
+	// xkms
+	// --------------------------------------------------
+	pyxsec::XKMSMessageFactory_init();
 }
