@@ -38,15 +38,28 @@
 #include "dsig/DSIGTransformXSL.h"
 #include "dsig/DSIGXPathFilterExpr.h"
 // enc
+#include "enc/XSECCryptoBase64.h"
 #include "enc/XSECCryptoException.h"
+#include "enc/XSECCryptoHash.h"
 #include "enc/XSECCryptoKey.h"
+#include "enc/XSECCryptoKeyDSA.h"
+#include "enc/XSECCryptoKeyEC.h"
 #include "enc/XSECCryptoKeyHMAC.h"
 #include "enc/XSECCryptoKeyRSA.h"
+#include "enc/XSECCryptoProvider.h"
 #include "enc/XSECCryptoSymmetricKey.h"
+#include "enc/XSECCryptoUtils.h"
 #include "enc/XSECCryptoX509.h"
 #include "enc/XSECKeyInfoResolver.h"
+#include "enc/XSECKeyInfoResolverDefault.h"
+#include "enc/OpenSSL/OpenSSLCryptoBase64.h"
+#include "enc/OpenSSL/OpenSSLCryptoHash.h"
+#include "enc/OpenSSL/OpenSSLCryptoHashHMAC.h"
 #include "enc/OpenSSL/OpenSSLCryptoKeyHMAC.h"
+#include "enc/OpenSSL/OpenSSLCryptoKeyDSA.h"
+#include "enc/OpenSSL/OpenSSLCryptoKeyEC.h"
 #include "enc/OpenSSL/OpenSSLCryptoKeyRSA.h"
+#include "enc/OpenSSL/OpenSSLCryptoProvider.h"
 #include "enc/OpenSSL/OpenSSLCryptoSymmetricKey.h"
 #include "enc/OpenSSL/OpenSSLCryptoX509.h"
 // framework
@@ -81,9 +94,12 @@ BOOST_PYTHON_MODULE(__Santuario)
 	pyxsec::DSIGTransform_init();
 
 	// enc
+	pyxsec::XSECCryptoBase64_init();
+	pyxsec::XSECCryptoHash_init();
 	pyxsec::XSECCryptoKey_init();
 	pyxsec::XSECCryptoKeyHMAC_init();
 	pyxsec::XSECCryptoX509_init();
+	pyxsec::XSECKeyInfoResolver_init();
 
 	// xenc
 	pyxsec::XENCEncryptedType_init();
@@ -93,7 +109,10 @@ BOOST_PYTHON_MODULE(__Santuario)
 
 	// inherited (depth:2) classes
 	// enc
+	pyxsec::XSECCryptoKeyDSA_init();
+	pyxsec::XSECCryptoKeyEC_init();
 	pyxsec::XSECCryptoKeyRSA_init();
+	pyxsec::XSECCryptoProvider_init();
 	pyxsec::XSECCryptoSymmetricKey_init();
 	pyxsec::XKMSResultType_init();
 
@@ -133,10 +152,17 @@ BOOST_PYTHON_MODULE(__Santuario)
 	// enc
 	// --------------------------------------------------
 	pyxsec::XSECCryptoException_init();
-	pyxsec::XSECKeyInfoResolver_init();
+	pyxsec::XSECCryptoUtils_init();
+	pyxsec::XSECKeyInfoResolverDefault_init();
 	// OpenSSL
+	pyxsec::OpenSSLCryptoBase64_init();
+	pyxsec::OpenSSLCryptoHash_init();
+	pyxsec::OpenSSLCryptoHashHMAC_init();
 	pyxsec::OpenSSLCryptoKeyHMAC_init();
+	pyxsec::OpenSSLCryptoKeyDSA_init();
+	pyxsec::OpenSSLCryptoKeyEC_init();
 	pyxsec::OpenSSLCryptoKeyRSA_init();
+	pyxsec::OpenSSLCryptoProvider_init();
 	pyxsec::OpenSSLCryptoSymmetricKey_init();
 	pyxsec::OpenSSLCryptoX509_init();
 
